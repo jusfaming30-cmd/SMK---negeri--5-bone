@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Latihan Kalkulator jusfaming</title>
+
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #071952, #088395, #35A29F);
+    padding: 20px;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 430px;
+    background: rgba(10, 20, 35, 0.96);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.header p {
+    font-size: 13px;
+    color: #8fffea;
+    margin-top: 5px;
+}
+
+.display {
+    background: #020617;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    color: white;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+    overflow: hidden;
+}
+
+.history {
+    color: #8b9bb4;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+.result {
+    font-size: 32px;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.mode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.mode button {
+    background: #088395;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+button {
+    border: none;
+    min-height: 55px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #172033;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+button:active {
+    transform: scale(0.92);
+}
+
+.function {
+    background: #24344d;
+    color: #8fffea;
+}
+
+.operator {
+    background: #075985;
+}
+
+.clear {
+    background: #dc2626;
+}
+
+.equal {
+    background: #16a34a;
+    grid-column: span 2;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.history-box {
+    margin-top: 15px;
+    background: #020617;
+    border-radius: 15px;
+    padding: 12px;
+    color: white;
+    max-height: 130px;
+    overflow-y: auto;
+}
+
+.history-box h3 {
+    color: #8fffea;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.history-item {
+    font-size: 13px;
+    color: #cbd5e1;
+    padding: 5px 0;
+    border-bottom: 1px solid #1e293b;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+
+    <div class="header">
+        <h1>🧮 latihan Kalkulator Scientific</h1>
+        <p>SMK 5 BONE • Digital Calculator</p>
+      <p> Nama:jusfaming<p>
+      <p> Jusrusan:TJKT
+    </div>
+
+    <div class="display">
+        <div class="history" id="history"></div>
+        <div class="result" id="display">0</div>
+    </div>
+
+    <div class="mode">
+        <span>Mode: <b id="modeText">DEG</b></span>
+        <button onclick="ubahMode()">DEG / RAD</button>
+    </div>
+
+    <div class="buttons">
+
+        <!-- Scientific -->
+        <button class="function" onclick="fungsi('sin')">sin</button>
+        <button class="function" onclick="fungsi('cos')">cos</button>
+        <button class="function" onclick="fungsi('tan')">tan</button>
+        <button class="function" onclick="fungsi('log')">log</button>
+        <button class="function" onclick="fungsi('ln')">ln</button>
+
+        <button class="function" onclick="fungsi('asin')">sin⁻¹</button>
+        <button class="function" onclick="fungsi('acos')">cos⁻¹</button>
+        <button class="function" onclick="fungsi('atan')">tan⁻¹</button>
+        <button class="function" onclick="fungsi('sqrt')">√</button>
+        <button class="function" onclick="fungsi('square')">x²</button>
+
+        <button class="function" onclick="input('π')">π</button>
+        <button class="function" onclick="input('e')">e</button>
+        <button class="function" onclick="fungsi('factorial')">x!</button>
+        <button class="function" onclick="input('(')">(</button>
+        <button class="function" onclick="input(')')">)</button>
+
+        <!-- Clear -->
+        <button class="clear" onclick="clearAll()">AC</button>
+        <button class="clear" onclick="hapus()">⌫</button>
+        <button class="operator" onclick="input('%')">%</button>
+        <button class="operator" onclick="input('/')">÷</button>
+        <button class="operator" onclick="input('*')">×</button>
+
+        <!-- Numbers -->
+        <button onclick="input('7')">7</button>
+        <button onclick="input('8')">8</button>
+        <button onclick="input('9')">9</button>
+        <button class="operator" onclick="input('-')">−</button>
+        <button class="operator" onclick="input('+')">+</button>
+
+        <button onclick="input('4')">4</button>
+        <button onclick="input('5')">5</button>
+        <button onclick="input('6')">6</button>
+        <button onclick="input('.')">.</button>
+        <button class="equal" onclick="hitung()">=</button>
+
+        <button onclick="input('1')">1</button>
+        <button onclick="input('2')">2</button>
+        <button onclick="input('3')">3</button>
+
+        <button class="zero" onclick="input('0')">0</button>
+        <button onclick="input('00')">00</button>
+
+    </div>
+
+    <div class="history-box">
+        <h3>📜 Riwayat Perhitungan</h3>
+        <div id="historyList">
+            Belum ada perhitungan.
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+let ekspresi = "";
+let mode = "DEG";
+
+const display = document.getElementById("display");
+const historyDisplay = document.getElementById("history");
+const historyList = document.getElementById("historyList");
+
+function updateDisplay() {
+    display.textContent = ekspresi || "0";
+}
+
+function input(value) {
+    ekspresi += value;
+    updateDisplay();
+}
+
+function clearAll() {
+    ekspresi = "";
+    historyDisplay.textContent = "";
+    updateDisplay();
+}
+
+function hapus() {
+    ekspresi = ekspresi.slice(0, -1);
+    updateDisplay();
+}
+
+function ubahMode() {
+    mode = mode === "DEG" ? "RAD" : "DEG";
+    document.getElementById("modeText").textContent = mode;
+}
+
+function keRad(x) {
+    return mode === "DEG" ? x * Math.PI / 180 : x;
+}
+
+function dariRad(x) {
+    return mode === "DEG" ? x * 180 / Math.PI : x;
+}
+
+function fungsi(nama) {
+
+    if (!ekspresi) return;
+
+    try {
+
+        let angka = eval(
+            ekspresi
+                .replace(/π/g, "Math.PI")
+                .replace(/\be\b/g, "Math.E")
+        );
+
+        let hasil;
+
+        switch(nama) {
+
+            case "sin":
+                hasil = Math.sin(keRad(angka));
+                break;
+
+            case "cos":
+                hasil = Math.cos(keRad(angka));
+                break;
+
+            case "tan":
+                hasil = Math.tan(keRad(angka));
+                break;
+
+            case "asin":
+                hasil = dariRad(Math.asin(angka));
+                break;
+
+            case "acos":
+                hasil = dariRad(Math.acos(angka));
+                break;
+
+            case "atan":
+                hasil = dariRad(Math.atan(angka));
+                break;
+
+            case "sqrt":
+                hasil = Math.sqrt(angka);
+                break;
+
+            case "square":
+                hasil = Math.pow(angka, 2);
+                break;
+
+            case "log":
+                hasil = Math.log10(angka);
+                break;
+
+            case "ln":
+                hasil = Math.log(angka);
+                break;
+
+            case "factorial":
+                hasil = faktorial(angka);
+                break;
+        }
+
+        historyDisplay.textContent = ekspresi + " → " + nama;
+
+        tambahRiwayat(
+            ekspresi + " → " + nama + " = " + hasil
+        );
+
+        ekspresi = formatHasil(hasil);
+        updateDisplay();
+
+    } catch {
+        display.textContent = "Error";
+        ekspresi = "";
+    }
+}
+
+function faktorial(n) {
+
+    if (n < 0 || !Number.isInteger(n)) {
+        throw new Error();
+    }
+
+    let hasil = 1;
+
+    for (let i = 1; i <= n; i++) {
+        hasil *= i;
+    }
+
+    return hasil;
+}
+
+function hitung() {
+
+    if (!ekspresi) return;
+
+    try {
+
+        let tampil = ekspresi;
+
+        let rumus = ekspresi
+            .replace(/π/g, "Math.PI")
+            .replace(/\be\b/g, "Math.E")
+            .replace(/÷/g, "/")
+            .replace(/×/g, "*")
+            .replace(/%/g, "/100");
+
+        let hasil = eval(rumus);
+
+        hasil = formatHasil(hasil);
+
+        historyDisplay.textContent = tampil + " =";
+
+        tambahRiwayat(tampil + " = " + hasil);
+
+        ekspresi = hasil.toString();
+
+        updateDisplay();
+
+    } catch {
+
+        display.textContent = "Error";
+        ekspresi = "";
+
+    }
+}
+
+function formatHasil(angka) {
+
+    if (!Number.isFinite(angka)) {
+        throw new Error();
+    }
+
+    if (Math.abs(angka) < 1e-10) {
+        angka = 0;
+    }
+
+    return Number.parseFloat(angka.toPrecision(12));
+}
+
+function tambahRiwayat(teks) {
+
+    if (historyList.textContent === "Belum ada perhitungan.") {
+        historyList.innerHTML = "";
+    }
+
+    const item = document.createElement("div");
+
+    item.className = "history-item";
+    item.textContent = teks;
+
+    historyList.prepend(item);
+
+}
+
+document.addEventListener("keydown", function(e) {
+
+    const tombol = e.key;
+
+    if (
+        /[0-9+\-*/().]/.test(tombol)
+    ) {
+        input(tombol);
+    }
+
+    if (tombol === "Enter") {
+        hitung();
+    }
+
+    if (tombol === "Backspace") {
+        hapus();
+    }
+
+    if (tombol === "Escape") {
+        clearAll();
+    }
+    
+});
+
+</script>
+
+</body>
+</html>
