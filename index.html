@@ -3,192 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMK 5 Bone - TJKT</title>
+    <title>Website TJKT SMK Negeri 5 Bone</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at top, #123b70, transparent 45%),
-                linear-gradient(135deg, #020617, #071a33, #020617);
             font-family: Arial, sans-serif;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            width: 92%;
-            max-width: 900px;
             text-align: center;
-            padding: 35px 20px;
-            border: 1px solid rgba(0, 200, 255, 0.4);
-            border-radius: 25px;
-            background: rgba(0, 20, 40, 0.65);
-            box-shadow:
-                0 0 20px rgba(0, 200, 255, 0.25),
-                inset 0 0 25px rgba(0, 150, 255, 0.08);
-        }
-
-        /* LOGO */
-        .logo {
-            margin-bottom: 10px;
-        }
-
-        .logo img {
-            width: 160px;
-            height: 160px;
-            object-fit: contain;
-            animation: pulse 2s infinite;
-            filter:
-                drop-shadow(0 0 5px #00eaff)
-                drop-shadow(0 0 20px #00eaff);
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.08);
-            }
+            background: #f4f4f4;
+            padding: 40px 20px;
         }
 
         h1 {
-            font-size: clamp(28px, 7vw, 55px);
-            letter-spacing: 3px;
-            color: #00eaff;
-            text-shadow: 0 0 20px #00eaff;
+            color: #222;
         }
 
-        .subjudul {
-            margin-top: 10px;
-            color: #8be9ff;
+        p {
+            color: #555;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 30px auto;
+        }
+
+        a {
+            text-decoration: none;
+            background: #198754;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
             font-size: 18px;
         }
 
-        /* TEKS BERJALAN */
-        .marquee {
-            margin-top: 30px;
-            width: 100%;
-            overflow: hidden;
-            border-top: 2px solid #00eaff;
-            border-bottom: 2px solid #00eaff;
-            padding: 18px 0;
-            background: rgba(0, 234, 255, 0.05);
-            box-shadow: 0 0 15px rgba(0, 234, 255, 0.25);
-        }
-
-        .marquee-content {
-            display: inline-block;
-            white-space: nowrap;
-            padding-left: 100%;
-            animation: jalan 12s linear infinite;
-            font-size: clamp(18px, 4vw, 27px);
-            font-weight: bold;
-            text-shadow:
-                0 0 5px #00eaff,
-                0 0 15px #00eaff;
-        }
-
-        @keyframes jalan {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        .info {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .box {
-            padding: 15px 20px;
-            border-radius: 15px;
-            border: 1px solid #00eaff;
-            background: rgba(0, 234, 255, 0.08);
-        }
-
-        .box b {
-            color: #00eaff;
-        }
-
-        footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #94a3b8;
+        a:hover {
+            background: #146c43;
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+    <h1>Website TJKT SMK Negeri 5 Bone</h1>
 
-    <!-- LOGO SMK 5 BONE -->
-    <div class="logo">
-        <img src="data:image/png;base64,PASTE_BASE64_LOGO_DI_SINI"
-             alt="Logo SMK Negeri 5 Bone">
-    </div>
+    <p>Selamat datang di website jurusan TJKT.</p>
 
-    <h1>SMK 5 BONE</h1>
+    <div class="menu">
 
-    <p class="subjudul">
-        Teknik Jaringan Komputer dan Telekomunikasi
-    </p>
+        <a href="index-1.html">
+            🏠 Halaman 1
+        </a>
 
-    <div class="marquee">
-        <div class="marquee-content">
-            🚀 SELAMAT DATANG DI JURUSAN TJKT SMK 5 BONE
-            &nbsp;&nbsp; • &nbsp;&nbsp;
-            💻 BELAJAR JARINGAN • KOMPUTER • TELEKOMUNIKASI
-            &nbsp;&nbsp; • &nbsp;&nbsp;
-            🌐 CONNECT • CREATE • INNOVATE
-            &nbsp;&nbsp; • &nbsp;&nbsp;
-            🔥 TJKT SMK 5 BONE
-        </div>
-    </div>
+        <a href="Kalkulator.html">
+            halaman 2
+        </a>
 
-    <div class="info">
-
-        <div class="box">
-            💻 <b>Komputer</b>
-        </div>
-
-        <div class="box">
-            🌐 <b>Jaringan</b>
-        </div>
-
-        <div class="box">
-            📡 <b>Telekomunikasi</b>
-        </div>
-
-        <div class="box">
-            🚀 <b>Teknologi</b>
-        </div>
+        <a href="kalkulator.html">
+            Halaman 3
+        </a>
 
     </div>
-
-    <footer>
-        © 2026 SMK 5 Bone • Jurusan TJKT
-    </footer>
-
-</div>
 
 </body>
 </html>
