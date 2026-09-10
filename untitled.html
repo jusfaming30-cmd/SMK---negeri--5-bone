@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SMK 5 BONE • TJKT</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at 50% 10%, #075486, transparent 35%),
+        radial-gradient(circle at 10% 90%, #06345c, transparent 30%),
+        linear-gradient(145deg, #020817, #061d3b, #020817);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+}
+
+/* GRID BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(0,225,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,225,255,.04) 1px, transparent 1px);
+
+    background-size: 35px 35px;
+}
+
+/* KARTU UTAMA */
+.container {
+    width: 100%;
+    max-width: 700px;
+
+    padding: 30px 18px 25px;
+
+    text-align: center;
+
+    background: rgba(2,24,48,.88);
+
+    border: 1px solid #00dfff;
+    border-radius: 30px;
+
+    box-shadow:
+        0 0 20px rgba(0,223,255,.25),
+        inset 0 0 35px rgba(0,223,255,.04);
+
+    backdrop-filter: blur(15px);
+
+    position: relative;
+    z-index: 2;
+}
+
+/* LOGO */
+.logo-box {
+    width: 175px;
+    height: 175px;
+
+    margin: 0 auto 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+/* CAHAYA DI BELAKANG LOGO */
+.logo-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 135px;
+    height: 135px;
+
+    border-radius: 50%;
+
+    background: #00eaff;
+
+    filter: blur(35px);
+
+    opacity: .25;
+
+    animation: glow 3s infinite;
+}
+
+@keyframes glow {
+    50% {
+        transform: scale(1.15);
+        opacity: .4;
+    }
+}
+
+/* FOTO LOGO */
+.logo {
+    width: 150px;
+    height: 150px;
+
+    object-fit: contain;
+
+    position: relative;
+    z-index: 2;
+
+    filter:
+        drop-shadow(0 0 7px #00eaff)
+        drop-shadow(0 0 18px #00eaff);
+
+    animation: melayang 4s ease-in-out infinite;
+}
+
+@keyframes melayang {
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* JUDUL */
+h1 {
+    font-size: 43px;
+    letter-spacing: 3px;
+
+    color: #00eaff;
+
+    text-shadow:
+        0 0 8px #00eaff,
+        0 0 24px #00eaff;
+
+    margin-bottom: 8px;
+}
+
+/* SUBTITLE */
+.subtitle {
+    color: #b4f3ff;
+    font-size: 17px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+/* STATUS */
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 15px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(0,229,255,.5);
+
+    color: #00eaff;
+
+    font-size: 12px;
+
+    margin-bottom: 18px;
+
+    background: rgba(0,229,255,.05);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #00ff88;
+
+    box-shadow: 0 0 10px #00ff88;
+
+    animation: kedip 1s infinite;
+}
+
+@keyframes kedip {
+    50% {
+        opacity: .3;
+    }
+}
+
+/* WAKTU */
+.time-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+}
+
+.time-box {
+    padding: 12px 5px;
+
+    border: 1px solid rgba(0,225,255,.35);
+
+    border-radius: 14px;
+
+    background: rgba(0,225,255,.05);
+}
+
+.label {
+    display: block;
+
+    color: #719eb0;
+
+    font-size: 10px;
+
+    margin-bottom: 5px;
+
+    text-transform: uppercase;
+}
+
+.value {
+    color: #00eaff;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    text-shadow: 0 0 7px #00eaff;
+}
+
+/* GARIS */
+.line {
+    height: 2px;
+
+    background: #00eaff;
+
+    box-shadow: 0 0 10px #00eaff;
+
+    margin-bottom: 17px;
+}
+
+/* TEKS BERJALAN */
+.marquee {
+    overflow: hidden;
+
+    border-top: 1px solid #00eaff;
+    border-bottom: 1px solid #00eaff;
+
+    padding: 12px 0;
+
+    margin-bottom: 24px;
+}
+
+.marquee-text {
+    width: max-content;
+
+    color: #e5fcff;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    animation: jalan 18s linear infinite;
+}
+
+@keyframes jalan {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* MENU */
+.menu {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 13px;
+
+    max-width: 500px;
+
+    margin: auto;
+}
+
+/* TOMBOL */
+.menu a {
+    text-decoration: none;
+
+    color: #00eaff;
+
+    padding: 17px 7px;
+
+    border: 1px solid #00dfff;
+
+    border-radius: 17px;
+
+    background: rgba(0,217,255,.05);
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.menu a:hover {
+    background: #00dfff;
+
+    color: #031427;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 12px #00dfff,
+        0 0 28px rgba(0,217,255,.7);
+}
+
+/* INFORMASI */
+.info {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    margin-top: 22px;
+}
+
+.info span {
+    font-size: 10px;
+
+    color: #7ea5b5;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    padding: 6px 9px;
+
+    border-radius: 9px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 24px;
+
+    color: #6e8998;
+
+    font-size: 13px;
+}
+
+/* HP */
+@media(max-width:500px) {
+
+    .container {
+        padding: 27px 13px 22px;
+    }
+
+    .logo-box {
+        width: 160px;
+        height: 160px;
+    }
+
+    .logo {
+        width: 138px;
+        height: 138px;
+    }
+
+    h1 {
+        font-size: 34px;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .value {
+        font-size: 12px;
+    }
+
+    .menu {
+        gap: 10px;
+    }
+
+    .menu a {
+        font-size: 14px;
+        padding: 16px 4px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+    <div class="logo-box">
+        <img
+            src="./logo.png"
+            alt="Logo SMK Negeri 5 Bone"
+            class="logo"
+        >
+    </div>
+
+    <!-- NAMA SEKOLAH -->
+    <h1>SMK 5 BONE</h1>
+
+    <!-- JURUSAN -->
+    <p class="subtitle">
+        Teknik Jaringan Komputer dan Telekomunikasi
+    </p>
+
+    <!-- STATUS -->
+    <div class="status">
+        <span class="dot"></span>
+        SISTEM TJKT ONLINE
+    </div>
+
+    <!-- TANGGAL JAM DURASI -->
+    <div class="time-grid">
+
+        <div class="time-box">
+            <span class="label">📅 Tanggal</span>
+            <span class="value" id="tanggal">--</span>
+        </div>
+
+        <div class="time-box">
+            <span class="label">🕐 Jam </span>
+            <span class="value" id="jam">--:--:--</span>
+        </div>
+
+        <div class="time-box">
+            <span class="label">⏱️ Durasi</span>
+            <span class="value" id="durasi">00:00:00</span>
+        </div>
+
+    </div>
+
+    <div class="line"></div>
+
+    <!-- TEKS BERJALAN -->
+    <div class="marquee">
+
+        <div class="marquee-text">
+
+            🚀 JURUSAN TJKT SMK 5 BONE
+            &nbsp; • &nbsp;
+            💻 KOMPUTER
+            &nbsp; • &nbsp;
+            🌐 JARINGAN
+            &nbsp; • &nbsp;
+            📡 TELEKOMUNIKASI
+            &nbsp; • &nbsp;
+            ⚡ TEKNOLOGI
+            &nbsp; • &nbsp;
+
+            🚀 JURUSAN TJKT SMK 5 BONE
+            &nbsp; • &nbsp;
+            💻 KOMPUTER
+            &nbsp; • &nbsp;
+            🌐 JARINGAN
+            &nbsp; • &nbsp;
+            📡 TELEKOMUNIKASI
+
+        </div>
+
+    </div>
+
+    <!-- MENU -->
+    <div class="menu">
+
+        <a href="komputer.html">
+            💻 Komputer
+        </a>
+
+        <a href="jaringan.html">
+            🌐 Jaringan
+        </a>
+
+        <a href="telekomunikasi.html">
+            📡 Telekomunikasi
+        </a>
+
+        <a href="teknologi.html">
+            🚀 Teknologi
+        </a>
+
+    </div>
+
+    <!-- TAG -->
+    <div class="info">
+        <span>⚡ TJKT</span>
+        <span>🌐 NETWORK</span>
+        <span>💻 COMPUTER</span>
+        <span>📡 TELECOM</span>
+    </div>
+
+    <footer>
+        © 2026 SMK 5 Bone • Jurusan TJKT
+    </footer>
+
+</div>
+
+
+<script>
+
+/* =========================
+   TANGGAL DAN JAM OTOMATIS
+   MENGIKUTI HP
+========================= */
+
+function updateWaktu() {
+
+    const sekarang = new Date();
+
+    document.getElementById("tanggal").textContent =
+        sekarang.toLocaleDateString("id-ID", {
+            weekday: "short",
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        });
+
+    document.getElementById("jam").textContent =
+        sekarang.toLocaleTimeString("id-ID", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
+}
+
+updateWaktu();
+
+setInterval(updateWaktu, 1000);
+
+
+/* =========================
+   DURASI SEJAK WEBSITE DIBUKA
+========================= */
+
+const waktuMulai = Date.now();
+
+function updateDurasi() {
+
+    let totalDetik =
+        Math.floor(
+            (Date.now() - waktuMulai) / 1000
+        );
+
+    let jam =
+        Math.floor(totalDetik / 3600);
+
+    let menit =
+        Math.floor(
+            (totalDetik % 3600) / 60
+        );
+
+    let detik =
+        totalDetik % 60;
+
+    document.getElementById("durasi").textContent =
+        String(jam).padStart(2, "0") + ":" +
+        String(menit).padStart(2, "0") + ":" +
+        String(detik).padStart(2, "0");
+}
+
+updateDurasi();
+
+setInterval(updateDurasi, 1000);
+
+</script>
+
+</body>
+</html>
