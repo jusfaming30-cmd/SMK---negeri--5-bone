@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang - SMK 5 Bone</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #001f3f, #0066cc, #00c6ff);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: muncul 2s ease;
+        }
+
+        .icon {
+            font-size: 70px;
+            animation: melayang 2s infinite ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        .welcome {
+            font-size: 22px;
+            letter-spacing: 3px;
+            animation: muncul 2s ease;
+        }
+
+        h1 {
+            font-size: 45px;
+            margin: 15px 0;
+            text-shadow: 0 0 20px rgba(255,255,255,0.7);
+        }
+
+        .nama {
+            font-size: 25px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .jurusan {
+            margin-top: 10px;
+            font-size: 19px;
+            letter-spacing: 2px;
+        }
+
+        .loading {
+            width: 280px;
+            height: 8px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            margin: 35px auto 15px;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            width: 0%;
+            background: white;
+            border-radius: 20px;
+            animation: loading 6s linear forwards;
+        }
+
+        .info {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .btn {
+            margin-top: 25px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: #0066cc;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes melayang {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes loading {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="icon">👤</div>
+
+        <div class="welcome">
+            SELAMAT DATANG
+        </div>
+
+        <h1>SMK NEGERI 5 BONE</h1>
+
+        <div class="nama">
+            Jusfaming
+        </div>
+
+        <div class="jurusan">
+            Siswa Jurusan TJKT
+        </div>
+
+        <div class="loading">
+            <div class="bar"></div>
+        </div>
+
+        <div class="info">
+            Menyiapkan halaman utama...
+        </div>
+
+        <button class="btn" onclick="masuk()">
+            🚀 MASUK
+        </button>
+
+    </div>
+
+    <script>
+        // Durasi otomatis 6 detik
+        setTimeout(function() {
+            masuk();
+        }, 6000);
+
+        function masuk() {
+            alert("Selamat datang,Jusfaming! 👋");
+            
+            // Jika sudah punya halaman beranda,
+            // ubah "beranda.html" menjadi nama file beranda kamu.
+            // window.location.href = "beranda.html";
+        }
+    </script>
+
+</body>
+</html>
